@@ -1,6 +1,9 @@
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
+//@author Phil Ganem
+//https://adventofcode.com/2021/day/1
+
 fn main(){
     //Open file
     let file = File::open("data\\data.txt")
@@ -13,11 +16,18 @@ fn main(){
     let mut prev_depth = 0;
 
     for line in reader.lines(){
-        let line = line.unwrap();
-        let line_int: i32 = line.parse().unwrap();
-        
+        //Unwrap line of file data
+        let line = line
+            .unwrap();
+        //Cast line to int
+        let line_int: i32 = line
+            .parse()
+            .unwrap();
+            
+        //Increases count of depth increases if its not the first iteration and
+        //depth increased over previous interation 
         if prev_depth != 0 && line_int > prev_depth {count = count + 1;}
-
+        //sets prev depth to current depth
         prev_depth = line_int;
     }
 
