@@ -4,9 +4,12 @@ use std::io::{BufRead, BufReader};
 //@author Phil Ganem
 //https://adventofcode.com/2021/day/1
 
-fn main(){
+//Path to data set
+static SUB_DEPTH_PATH: &'static str  = "data\\data.txt";
+
+fn part_one(){
     //Open file
-    let file = File::open("data\\data.txt")
+    let file = File::open(SUB_DEPTH_PATH)
         .unwrap();
     //Buffered file reader    
     let reader = BufReader::new(file);
@@ -31,5 +34,37 @@ fn main(){
         prev_depth = line_int;
     }
 
-    println!("Number of depth increases: {}", count)
+    println!("[PART 1] Number of depth increases: {}", count)
+}
+
+fn part_two(){
+    //Open file
+    let file = File::open(SUB_DEPTH_PATH)
+        .unwrap();
+    //Buffered file reader    
+    let reader = BufReader::new(file);
+    //Maps lines to a vector
+    let num_vec: Vec<usize> = reader
+        .lines()
+        .map(|s| s.unwrap().parse::<usize>().unwrap())
+        .collect();
+    // Number of depth increases
+    let count: Vec<usize> = num_vec
+        .windows(3)
+        .map(|x| x.to_vec().iter().sum())
+        .collect();
+
+    // same os part 1
+    println!(
+        "[PART 2] Number of depth increases: {}", count
+        .iter()
+        .zip(&count[1..])
+        .filter(|(a, b)| b > a)
+        .count()
+    );
+}
+
+fn main(){
+    part_one();
+    part_two();
 }
