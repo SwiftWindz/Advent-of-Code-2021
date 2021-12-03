@@ -4,6 +4,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import day_2.src.Submarine;
 
+/**
+ * Main class for Advent of Code Day 2 Part One
+ * https://adventofcode.com/2021/day/2#part2
+ *  @author Phil Ganem
+ */
+
 public class SubMainPartOne {
 
     public static void main(String[] args) {
