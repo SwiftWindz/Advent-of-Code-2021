@@ -54,7 +54,7 @@ fn part_two(){
         .map(|x| x.to_vec().iter().sum())
         .collect();
 
-    // same os part 1
+    //Prints answer
     println!(
         "[PART 2] Number of depth increases: {}", count
         .iter()
